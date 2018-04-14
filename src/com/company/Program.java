@@ -6,12 +6,20 @@ import com.company.view.impl.CmdLineServiceImpl;
 
 import java.io.IOException;
 
-public class Program {
+public class Program extends Thread {
+    public static void main(String[] args) {
+        new Program().start();
 
-    public static void main(String[] args) throws IOException {
+    }
+
+    public void run() {
+        System.out.println("\n" + "Prog running as Thread:" + "\n");
         CmdLineService cmd = new CmdLineServiceImpl(new ContactServiceImpl());
-        cmd.runMenu();
-
+        try {
+            cmd.runMenu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
