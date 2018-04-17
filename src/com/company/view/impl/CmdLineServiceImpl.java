@@ -1,20 +1,24 @@
 package com.company.view.impl;
 
 import com.company.services.ContactService;
+import com.company.utils.ValidationUtil;
 import com.company.view.CmdLineService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/**
+ * Сервис, реализующий логику предоставления и считывания информации в/из
+ * консоль.
+ */
 public class CmdLineServiceImpl implements CmdLineService {
 
-    private ContactService contactService;
-    private BufferedReader br =
-            new BufferedReader(new InputStreamReader(System.in));
+    private final ContactService contactService;
+    private final BufferedReader br;
 
     public CmdLineServiceImpl(ContactService contactService) {
         this.contactService = contactService;
+        this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
     private static void showMenu() {
@@ -41,7 +45,7 @@ public class CmdLineServiceImpl implements CmdLineService {
                     break;
                 }
                 case "3": {
-                    showContact();
+                    showContacts();
                     break;
                 }
                 case "4": {
@@ -58,26 +62,27 @@ public class CmdLineServiceImpl implements CmdLineService {
         }
     }
 
-    private void showContact() {
-        this.contactService.showContact();
+    private void showContacts() {
+        contactService.showContacts();
     }
 
     private void createContact() throws IOException {
         System.out.println("Enter name");
         String name = br.readLine();
         System.out.println("Enter age");
-        //int ageN = readInt();
-        int age = Integer.parseInt(br.readLine());
+        int age = readInt();
         System.out.println("Enter phoneNumber");
         String phoneNumber = br.readLine();
+
         this.contactService.createContact(name, age, phoneNumber);
     }
 
     private void deleteContact() throws IOException {
-        System.out.println("Enter Name");
+        System.out.println("Enter name for delete");
         String name = br.readLine();
         this.contactService.deleteContact(name);
     }
+
     private void editContact() throws IOException {
         System.out.println("Enter name of modified contact");
         String name = br.readLine();
@@ -93,20 +98,23 @@ public class CmdLineServiceImpl implements CmdLineService {
         String phoneNumber = br.readLine();
         System.out.println("Enter new phone");
         String newPhoneNumber = br.readLine();
+
         this.contactService.editContact(name, newName, newAge, newPhoneNumber);
     }
-    /*private int readInt() throws IOException {
+
+    private int readInt() throws IOException {
         int i;
         try {
             System.out.println("Input number!");
-            String line = this.br.readLine();
-            i = new Integer(line);
+            String line = br.readLine();
+            return ValidationUtil.checkNumber(line);
+            // = new Integer(line);
         }
         catch (NumberFormatException ex) {
             System.out.println("Wrong Input!");
             return readInt();
         }
-        return i;
-    }*/
+        //return i;
+    }
 
 }
