@@ -102,19 +102,19 @@ public class CmdLineServiceImpl implements CmdLineService {
         this.contactService.editContact(name, newName, newAge, newPhoneNumber);
     }
 
+    /**
+     * Проверяет ввод числа с консоли, если нет - этот метод повторяется
+     */
     private int readInt() throws IOException {
-        int i;
         try {
             System.out.println("Input number!");
             String line = br.readLine();
-            return ValidationUtil.checkNumber(line);
-            // = new Integer(line);
+            return ValidationUtil.checkNumber(line); // обращение к классу-валидатору ввода
         }
         catch (NumberFormatException ex) {
             System.out.println("Wrong Input!");
             return readInt();
         }
-        //return i;
     }
 
 }

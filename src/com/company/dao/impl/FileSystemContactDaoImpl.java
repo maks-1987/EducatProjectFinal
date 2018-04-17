@@ -15,7 +15,7 @@ public class FileSystemContactDaoImpl implements ContactDao {
     public FileSystemContactDaoImpl() {
     }
 
-    //TODO исправить логику такб чтобы файл не пересоздавался, а дополнялся
+    //TODO исправить логику так, чтобы файл не пересоздавался, а дополнялся
     @Override
     public void saveContact(Contact contact) {
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(
