@@ -21,7 +21,7 @@ public class FSContactServiceImpl implements ContactService {
 
     @Override
     public void deleteContact(String name) {
-//		this.contactList.remove(name);
+//        this.contactList.remove(name);
     }
 
     @Override

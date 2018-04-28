@@ -4,6 +4,8 @@ import com.company.dao.ContactDao;
 import com.company.model.Contact;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileSystemContactDaoImpl implements ContactDao {
     /**
@@ -11,15 +13,16 @@ public class FileSystemContactDaoImpl implements ContactDao {
      * zhestkom disc
      */
     private static final File FILE = new File("data");
+   // private List<Contact> currentContact = new ArrayList<>();
 
     public FileSystemContactDaoImpl() {
     }
 
-    //TODO исправить логику так, чтобы файл не пересоздавался, а дополнялся
+    //TODO файл дополняется
     @Override
     public void saveContact(Contact contact) {
-        try (PrintWriter writer = new PrintWriter(new BufferedWriter(
-                new FileWriter(FILE)))) {
+        try (PrintWriter writer = new PrintWriter(
+                new BufferedWriter(new FileWriter(FILE, true)))) {
             writer.println(contact);
             writer.flush();
         } catch (IOException e) {
@@ -29,6 +32,44 @@ public class FileSystemContactDaoImpl implements ContactDao {
 
     @Override
     public void removeContact() {
+
+    }
+
+    @Override
+    public List<Contact> showAll() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            return new ArrayList<>();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    /*//файл не пересоздается, а дополнялся новыми данными
+    @Override
+    public void saveContact(Contact contact) {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(
+                new FileWriter(FILE, true)))) { // append - продолж запись данных
+            writer.println(contact);                    // значение true-пишет вконец,
+            writer.flush();                             // false-пишет вначало
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void removeContact() {
+        *//*for (int i = 0; i < currentContact.size(); i++) {
+            Contact removeContact = currentContact.get(i);
+            Contact.class.getField(surName);
+            if (removeContact.getSurName().equals(surName)) {
+                currentContact.remove(i);
+            }
+        }*//*
     }
 
     @Override
@@ -41,5 +82,5 @@ public class FileSystemContactDaoImpl implements ContactDao {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

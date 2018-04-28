@@ -8,10 +8,6 @@ import com.company.view.CmdLineService;
 import com.company.view.impl.CmdLineServiceImpl;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Program {
 /*public class Program extends Thread {
@@ -28,11 +24,11 @@ public class Program {
         }
     }*/
     /**
-     * Nachalo progi. Tut ona zapuskaetsa, sozdautsa vse servisi i ustanavliv svaz
-     * mezdu nimi
+     * Тут прога запускается. Создаются экземпляры всех нужных интерфейсов, которые написаны
+     * в этой проге и все сервисы, для связи между ними.
      */
     public static void main(String[] args) throws IOException {
-        // Connection DB
+        /*// Connection DB
         try {
             Class.forName("org.h2.Driver");
             Connection conn = DriverManager.getConnection("jdbc:h2:" + "./src/DB/myDB", "root", "root");
@@ -44,7 +40,7 @@ public class Program {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
         // Sozdanie samogo niznego sloja servisov - DAO, kotor rabotaet so sredstvami
         // dolgosrochnogo hranenija info
@@ -60,7 +56,7 @@ public class Program {
         // i udobstvo raboti Polsovatela s progoj
         CmdLineService cmd = new CmdLineServiceImpl(contactService);
 
-        //Neposredstvennij zapusk graf interf i progi
+        //Neposredstvennij zapusk grafichesk interf i progi
         cmd.runMenu();
 
 

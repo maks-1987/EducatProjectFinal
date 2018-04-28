@@ -1,1 +1,4 @@
-Contact{name='n', age=5, phoneNumber= 5}
+Contact{name='n ', age=0, phoneNumber= =}
+Contact{name='m', age=9, phoneNumber= -}
+Contact{name='k', age=8, phoneNumber= -}
+Contact{name='bv', surName='null', age=654, phoneNumber='yt76'}

@@ -7,6 +7,7 @@ package com.company.model;
  */
 public class Contact {
     private String name;
+    private String surName;
     private int age;
     private String phoneNumber;
 
@@ -16,13 +17,20 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", phoneNumber= " + phoneNumber +
-                '}';
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
     public int getAge() {
@@ -41,16 +49,13 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", age=" + age +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getage() {
-        return age;
-    }
-
 }

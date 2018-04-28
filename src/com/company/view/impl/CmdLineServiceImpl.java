@@ -74,13 +74,14 @@ public class CmdLineServiceImpl implements CmdLineService {
         System.out.println("Enter phoneNumber");
         String phoneNumber = br.readLine();
 
-        this.contactService.createContact(name, age, phoneNumber);
+        contactService.createContact(name, age, phoneNumber);
     }
 
     private void deleteContact() throws IOException {
         System.out.println("Enter name for delete");
         String name = br.readLine();
-        this.contactService.deleteContact(name);
+
+        contactService.deleteContact(name);
     }
 
     private void editContact() throws IOException {
@@ -89,13 +90,13 @@ public class CmdLineServiceImpl implements CmdLineService {
         System.out.println("Enter new name");
         String newName = br.readLine();
 
-        System.out.println("Enter age of modified contact");
-        String age = br.readLine();
+        //System.out.println("Enter age of modified contact");
+        //String age = br.readLine();
         System.out.println("Enter new age");
-        int newAge = Integer.parseInt(br.readLine());
+        int newAge = readInt();
 
-        System.out.println("Enter phoneNumber of modified contact");
-        String phoneNumber = br.readLine();
+        //System.out.println("Enter phoneNumber of modified contact");
+        //String phoneNumber = br.readLine();
         System.out.println("Enter new phone");
         String newPhoneNumber = br.readLine();
 
