@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DBContactDAO implements ContactDao {
 
-    private static final String DB_URL = "jdbc:h2:tcp://localhost/~/Program";
+    private static final String DB_URL = "jdbc:h2:~/Program";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
@@ -22,7 +22,7 @@ public class DBContactDAO implements ContactDao {
         }
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
              Statement st = connection.createStatement()) {
-            st.execute("CREATE TABLE IF NOT  EXISTS CLIENT(ID INT AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255), AGE INT, PHONENUMBER VARCHAR(255));");
+            st.execute("CREATE TABLE IF NOT  EXISTS CLIENT(ID INT AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255), AGE INT, PHONENUMBER VARCHAR(255))");
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -35,7 +35,7 @@ public class DBContactDAO implements ContactDao {
         try (Connection connection = DriverManager
                 .getConnection(DB_URL, USER, PASSWORD);
              PreparedStatement st = connection
-                     .prepareStatement("INSERT INTO CLIENT(NAME, AGE, PHONENUMBER) VALUES(?, ?, ?);")
+                     .prepareStatement("INSERT INTO CLIENT(NAME, AGE, PHONENUMBER) VALUES(?, ?, ?)")
         ) {
             st.setString(1, contact.getName());
             st.setInt(2, contact.getAge());

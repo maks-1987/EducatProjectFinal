@@ -19,7 +19,7 @@ public class MainController {
     @FXML
     private TextField inputAge;
     @FXML
-    private TextField phoneNumber;
+    private TextField inputPhoneNumber;
     @FXML
     private Button createButton;
     @FXML
@@ -38,7 +38,7 @@ public class MainController {
     public void createContact() {
         String name = inputName.getText();
         String age = inputAge.getText();
-        String phoneNumber = inputName.getText();
+        String phoneNumber = inputPhoneNumber.getText();
         contactService.createContact(name, new Integer(age), new String(phoneNumber));
     }
 
