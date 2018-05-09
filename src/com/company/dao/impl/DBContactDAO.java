@@ -22,7 +22,7 @@ public class DBContactDAO implements ContactDao {
         }
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
              Statement st = connection.createStatement()) {
-            st.execute("CREATE TABLE IF NOT  EXISTS CLIENT(ID INT AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255), AGE INT);");
+            st.execute("CREATE TABLE IF NOT  EXISTS CLIENT(ID INT AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255), AGE INT, PHONENUMBER VARCHAR(255));");
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -34,10 +34,12 @@ public class DBContactDAO implements ContactDao {
     public void saveContact(Contact contact) {
         try (Connection connection = DriverManager
                 .getConnection(DB_URL, USER, PASSWORD);
-             PreparedStatement st = connection.prepareStatement("INSERT INTO CLIENT(NAME, AGE) VALUES(?, ?);")) {
-
+             PreparedStatement st = connection
+                     .prepareStatement("INSERT INTO CLIENT(NAME, AGE, PHONENUMBER) VALUES(?, ?, ?);")
+        ) {
             st.setString(1, contact.getName());
             st.setInt(2, contact.getAge());
+            st.setString(3, contact.getPhoneNumber());
 
             st.execute();
         }

@@ -21,14 +21,6 @@ public class CmdLineServiceImpl implements CmdLineService {
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    private static void showMenu() {
-        System.out.println("1. Create Contact");
-        System.out.println("2. Delete Contact");
-        System.out.println("3. Show Contact");
-        System.out.println("4. Edit Contact");
-        System.out.println("0. Exit");
-    }
-
     @Override
     public void runMenu() throws IOException {
         boolean isRunning = true;
@@ -61,6 +53,13 @@ public class CmdLineServiceImpl implements CmdLineService {
             }
         }
     }
+    private static void showMenu() {
+        System.out.println("1. Create Contact");
+        System.out.println("2. Delete Contact");
+        System.out.println("3. Show Contact");
+        System.out.println("4. Edit Contact");
+        System.out.println("0. Exit");
+    }
 
     private void showContacts() {
         contactService.showContacts();
@@ -69,8 +68,10 @@ public class CmdLineServiceImpl implements CmdLineService {
     private void createContact() throws IOException {
         System.out.println("Enter name");
         String name = br.readLine();
+
         System.out.println("Enter age");
         int age = readInt();
+
         System.out.println("Enter phoneNumber");
         String phoneNumber = br.readLine();
 

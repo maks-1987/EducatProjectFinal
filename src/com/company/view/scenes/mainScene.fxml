@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.company.view.controllers.MainController"
+            prefHeight="400.0" prefWidth="600.0">
+
+</AnchorPane>-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.company.view.controllers.MainController" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8">
+<children>
+    <TextField fx:id="inputName" layoutX="42.0" layoutY="45.0" />
+    <TextField fx:id="inputAge" layoutX="42.0" layoutY="93.0" />
+    <TextField fx:id="inputPhoneNumber" layoutX="42.0" layoutY="93.0" />
+    <Label layoutX="228.0" layoutY="50.0" text="Contact name" />
+    <Label layoutX="228.0" layoutY="98.0" text="Contact age" />
+    <Label layoutX="228.0" layoutY="50.0" text="Contact phoneNumber" />
+    <Button onAction="#createContact" fx:id="createButton" layoutX="362.0" layoutY="45.0" mnemonicParsing="false" text="Create Contact" />
+    <TableView fx:id="table" layoutX="42.0" layoutY="142.0" prefHeight="224.0" prefWidth="538.0">
+        <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="250.0" text="Name" />
+            <TableColumn fx:id="ageColumn" prefWidth="287.0" text="Age" />
+            <TableColumn fx:id="phoneNumberColumn" prefWidth="250.0" text="PhoneNumber" />
+        </columns>
+    </TableView>
+</children>
+</Pane>
