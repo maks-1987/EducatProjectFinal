@@ -23,6 +23,10 @@ public class MainController {
     @FXML
     private Button createButton;
     @FXML
+    private Button createButton2;
+    @FXML
+    private Button createButton3;
+    @FXML
     private TableView<Contact> table;
     @FXML
     private TableColumn<Contact, String> nameColumn;
@@ -36,6 +40,20 @@ public class MainController {
     }
 
     public void createContact() {
+        String name = inputName.getText();
+        String age = inputAge.getText();
+        String phoneNumber = inputPhoneNumber.getText();
+        contactService.createContact(name, new Integer(age), new String(phoneNumber));
+    }
+    // TODO: implement method
+    public void deleteContact() {
+        String name = inputName.getText();
+        String age = inputAge.getText();
+        String phoneNumber = inputPhoneNumber.getText();
+        contactService.createContact(name, new Integer(age), new String(phoneNumber));
+    }
+    // TODO: implement method
+    public void editContact() {
         String name = inputName.getText();
         String age = inputAge.getText();
         String phoneNumber = inputPhoneNumber.getText();

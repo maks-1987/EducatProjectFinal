@@ -9,7 +9,9 @@ import java.util.List;
 
 public class DBContactDAO implements ContactDao {
 
-    private static final String DB_URL = "jdbc:h2:~/Program";
+    private static final String DB_URL = "jdbc:h2:~/DBh2/test"; // этот путь к базе на компьютере,
+                                        // т.к. она embedded-типа, то лежит по умолчанию по этому
+                                        // пути C:\Users\max\DBh2
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
